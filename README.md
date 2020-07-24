@@ -1,6 +1,6 @@
 # password-cracker
 
-In this project I will create a program that repeatedly generates guesses for the password and compares solving methods by analyzing their success rates and execution times. This project uses Java 11.
+In this project I will create a program that enables a user to test the strength of the given password. The program repeatedly generates guesses that aim to match the password the user has given. After completion the program compares solving methods by showing execution times and number of guesses of the different methods. This project uses Java 11.
 
 ## Dokumentation
 
