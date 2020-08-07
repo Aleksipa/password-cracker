@@ -4,10 +4,16 @@ In this project I will create a program that enables a user to test the strength
 
 ## Dokumentation
 
-[Project definition](documentation/project_definition.md)
+[Project definition](docs/project_definition.md)
 
 ## Weekly reports
 
-[Week 1](documentation/weekly-reports/week-1.md)
+[Week 1](docs/weekly-reports/week-1.md)
 
-[Week 2](documentation/weekly-reports/week-2.md)
+[Week 2](docs/weekly-reports/week-2.md)
+
+[Week 3](docs/weekly-reports/week-3.md)
+
+## Test coverage
+
+[Coverage report](docs/coverage-report.png)
