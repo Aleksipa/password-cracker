@@ -2,5 +2,3 @@ venv
 __pycache__/
 .DS_Store
 .vscode/
-input/passwords.txt
-results/passwords_result.txt
