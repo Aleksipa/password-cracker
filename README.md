@@ -17,3 +17,27 @@ In this project I will create a program that enables a user to test the strength
 ## Test coverage
 
 [Coverage report](docs/coverage-report.png)
+
+## Installation
+
+Requires Python 3
+
+Create a virtual environment
+
+`$ python3 -m venv venv`
+
+Activate the virtual environment
+
+`source venv/bin/activate`
+
+Clone the repo
+
+`git clone https://github.com/Aleksipa/password-cracker.git`
+
+## Configurations
+
+Configurations can be found under configs folder. Name of the input file and accepted characters can be configured in config.json file. 
+
+## Input data and results
+
+Input data file (currently configured to passwords.txt) must be in the input folder int .txt format and contain passwords that are written on separate lines. Results file is created automatically after the run.py script has been run.
