@@ -1,6 +1,7 @@
 import itertools
 import time
 from collections import OrderedDict
+from bforce.cartesian_product import cProduct
 
 # Brute force class
 class bruteForce:
@@ -15,17 +16,19 @@ class bruteForce:
             self.alphabet_dict[char] = i
             i += 1
         self.alphabet_list = list(self.alphabet)
+        self._index = 0
 
     def guess(self,password):
         start = time.time()
         attempts = 0
         for i in range(1, 9):
-            for letter in itertools.product(self.alphabet_list, repeat=i):
+            for letter in cProduct(self.alphabet_list, repeat=i):
                 attempts += 1
                 letter = ''.join(letter)
                 if letter == password:
                     end = time.time()
                     executionTime = end - start
                     return (attempts, executionTime)
+
 
 
