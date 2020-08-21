@@ -5,6 +5,7 @@
 # imports
 import sys
 from bforce.brute_force import bruteForce
+from markov.markov import markov
 from configs.configure import Configure
 
 # loads input files, runs brute force guesser and writes output to results
@@ -22,6 +23,23 @@ def run():
             fo.write("{}\t{}\n".format(tries, timeAmount))
             fo.flush()
     fo.close()
+
+def runMarkov():
+    markovIt = markov({
+        "name": CONFIG.NAME,
+        "alphabet": CONFIG.ALPHABET
+    })
+    
+    fo = open("results/"+CONFIG.PASSWORDS_FILE.rstrip('.txt')+"_result.txt", "w")
+    with open("input/"+CONFIG.PASSWORDS_FILE, 'r') as inputfile:
+        for line in inputfile:
+            line = line.rstrip('\r\n')
+            ngrams = markovIt.build(line,3)
+            tries, timeAmount = markovIt.generate(ngrams,3,line)
+            fo.write("{}\t{}\n".format(tries, timeAmount))
+            fo.flush()
+    fo.close()
+
 
 def main():
     try:
