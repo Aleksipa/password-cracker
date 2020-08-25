@@ -36,8 +36,6 @@ class markov:
         return ngrams
 
     def generate(self, nGrams, n, password):
-        startTime = time.time()
-        attempts = 0
         start = random.choice(list(nGrams.keys()))
         currentNgram = tuple(start)
         result = list(start)
@@ -48,10 +46,22 @@ class markov:
                 if next is None: break
                 result.append(next)
                 currentNgram = tuple(result[-n:])
-        guess = ''.join(result)
-        attempts += 1
-        if guess == password:
-            end = time.time()
-            executionTime = end - startTime        
-            return (attempts, executionTime)
+            else:
+                break
+        return ''.join(result)
+
+    def guess(self, password, guesses):
+        start = time.time()
+        attempts = 0
+        for i in range(len(guesses)):
+            attempts +=1
+            if guesses[i] == password:
+                end = time.time()
+                executionTime = end - start
+                return (attempts, executionTime)
+        return (attempts, 0)
+
+
+
+
   
