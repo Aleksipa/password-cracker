@@ -19,18 +19,18 @@ class markov:
         self._index = 0
     
     # Creates a dict of ngrams based on given word
-    def build(self, words, n):
+    def build(self, word, n):
         ngrams = dict()
-        if len(words) < n:
+        if len(word) < n:
             return ngrams
-        for i in range(len(words)-n):
-            ngram = tuple(words[i:i+n])
-            next_word = words[i+n]
+        for i in range(len(word)-n):
+            ngram = tuple(word[i:i+n])
+            next_char = word[i+n]
             if ngram in ngrams:
-                ngrams[ngram].append(next_word)
+                ngrams[ngram].append(next_char)
             else:
-                ngrams[ngram] = [next_word]
-        last_ngram = tuple(words[len(words)-n:])
+                ngrams[ngram] = [next_char]
+        last_ngram = tuple(word[len(word)-n:])
         if last_ngram in ngrams:
             ngrams[last_ngram].append(None)
         else:
@@ -39,19 +39,16 @@ class markov:
 
     # Generates a string guess based on given ngram dict
     def generate(self, nGrams, n):
-        start = random.choice(list(nGrams.keys()))
-        currentNgram = tuple(start)
-        result = list(start)
-        for i in range(10):
-            if currentNgram in nGrams:
-                possibilities = nGrams[currentNgram]
-                next = random.choice(possibilities)
-                if next is None: break
-                result.append(next)
-                currentNgram = tuple(result[-n:])
-            else:
-                break
-        return ''.join(result)
+        firstLetters = random.choice(list(nGrams.keys()))
+        currentNgram = tuple(firstLetters)
+        result = list(firstLetters)
+        if currentNgram in nGrams:
+            possibilities = nGrams[currentNgram]
+            next = random.choice(possibilities)
+            result.append(next)
+            currentNgram = tuple(result[-n:])
+        else:
+            return ''.join(result)
 
     # Tries to guess given password based on guesses list
     def guess(self, password, guesses):
