@@ -38,12 +38,14 @@ def trainMarkov(passwordToGuess):
     
     with open("input/"+CONFIG.TRAINING_FILE, 'r') as inputfile:
         guesses = list()
+        inputWordList = list()
         for line in inputfile:
             line = line.rstrip('\r\n')
-            ngrams = markovIt.build(line,3)
-            guess = markovIt.generate(ngrams,3)
-            guesses.append(guess)
-            tries, timeAmount = markovIt.guess(passwordToGuess,guesses)  
+            inputWordList.append(line)
+        ngrams = markovIt.build(inputWordList,3)
+        guess = markovIt.generate(ngrams,3)
+        guesses.append(guess)
+        tries, timeAmount = markovIt.guess(passwordToGuess,guesses)  
     return(tries, timeAmount)
 
 def main():

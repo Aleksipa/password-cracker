@@ -19,23 +19,25 @@ class markov:
         self._index = 0
     
     # Creates a dict of ngrams based on given word
-    def build(self, word, n):
+    def build(self, wordList, n):
         ngrams = dict()
-        if len(word) < n:
-            return ngrams
-        for i in range(len(word)-n):
-            ngram = tuple(word[i:i+n])
-            next_char = word[i+n]
-            if ngram in ngrams:
-                ngrams[ngram].append(next_char)
+        for j in range(len(wordList)):
+            word = wordList[j]
+            if len(word) < n:
+                return ngrams
+            for i in range(len(word)-n):
+                ngram = tuple(word[i:i+n])
+                next_char = word[i+n]
+                if ngram in ngrams:
+                    ngrams[ngram].append(next_char)
+                else:
+                    ngrams[ngram] = [next_char]
+            last_ngram = tuple(word[len(word)-n:])
+            if last_ngram in ngrams:
+                ngrams[last_ngram].append(None)
             else:
-                ngrams[ngram] = [next_char]
-        last_ngram = tuple(word[len(word)-n:])
-        if last_ngram in ngrams:
-            ngrams[last_ngram].append(None)
-        else:
-            ngrams[last_ngram] = [None]
-        return ngrams
+                ngrams[last_ngram] = [None]
+            return ngrams
 
     # Generates a string guess based on given ngram dict
     def generate(self, nGrams, n):
