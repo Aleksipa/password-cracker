@@ -3,6 +3,7 @@ import random
 import time
 from collections import OrderedDict
 
+# Markov class. Tries to guess the given password with markov chain based ngrams.
 class markov:
 
     def __init__(self, dict):
@@ -17,6 +18,7 @@ class markov:
         self.alphabet_list = list(self.alphabet)
         self._index = 0
     
+    # Creates a dict of ngrams based on given word
     def build(self, words, n):
         ngrams = dict()
         if len(words) < n:
@@ -35,7 +37,8 @@ class markov:
             ngrams[last_ngram] = [None]
         return ngrams
 
-    def generate(self, nGrams, n, password):
+    # Generates a string guess based on given ngram dict
+    def generate(self, nGrams, n):
         start = random.choice(list(nGrams.keys()))
         currentNgram = tuple(start)
         result = list(start)
@@ -50,6 +53,7 @@ class markov:
                 break
         return ''.join(result)
 
+    # Tries to guess given password based on guesses list
     def guess(self, password, guesses):
         start = time.time()
         attempts = 0

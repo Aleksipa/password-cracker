@@ -3,7 +3,7 @@ import time
 from collections import OrderedDict
 from bforce.cartesian_product import cProduct
 
-# Brute force class
+# Brute force class. Tries to guess the given password with brute force.
 class bruteForce:
 
     def __init__(self, dict):

@@ -41,7 +41,7 @@ def trainMarkov(passwordToGuess):
         for line in inputfile:
             line = line.rstrip('\r\n')
             ngrams = markovIt.build(line,3)
-            guess = markovIt.generate(ngrams,3,line)
+            guess = markovIt.generate(ngrams,3)
             guesses.append(guess)
             tries, timeAmount = markovIt.guess(passwordToGuess,guesses)  
     return(tries, timeAmount)

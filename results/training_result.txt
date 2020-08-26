@@ -1,1 +1,0 @@
-It took brute force algorithm 9039621	tries and 2.8621788024902344 seconds to guess the password. For markov chain based algorithm it took 	1	tries and 9.5367431640625e-07 seconds to guess the password
