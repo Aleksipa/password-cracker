@@ -15,7 +15,7 @@ class TestBruteForceMethod(unittest.TestCase):
     def test_bruteForce_equals(self):
         tries, timeToCrack = self.bforce.guess("ale")
         self.assertEqual(tries, 97200, "Should be 97200")
-        self.assertAlmostEqual(timeToCrack, 0.0208, places=2)
+        self.assertAlmostEqual(timeToCrack, 0.03377, places=1)
     
     def test_bruteForce_not_equal(self):
         tries, timeToCrack = self.bforce.guess("ale")
