@@ -30,7 +30,25 @@ class TestMarkovMethod(unittest.TestCase):
         ngram = self.markov.build(lista, 3)
         result = self.markov.generate(ngram,3)
         self.assertEqual(len(result), 3)
+    
+    def test_markov_generate_not_equal(self):
+        lista = list()
+        lista.append("testi")
+        ngram = self.markov.build(lista, 3)
+        result = self.markov.generate(ngram,3)
+        self.assertNotEqual(result, "testi")
 
+    def test_markov_guess_equals(self):
+        guess = list()
+        guess.append("password")
+        attemps, executionTime = self.markov.guess("password", guess)
+        self.assertEqual(attemps, 1)
+    
+    def test_markov_guess_not_equal(self):
+        guess = list()
+        guess.append("password")
+        attemps, executionTime = self.markov.guess("testi", guess)
+        self.assertEqual(attemps, 1)
     
 
 
