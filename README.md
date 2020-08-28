@@ -18,6 +18,8 @@ In this project I will create a program that enables a user to test the strength
 
 [Week 5](docs/weekly-reports/week-5.md)
 
+[Week 6](docs/weekly-reports/week-6.md)
+
 ## Test coverage
 
 [Coverage report](docs/coverage-report.png)
