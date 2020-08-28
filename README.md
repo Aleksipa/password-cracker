@@ -40,8 +40,8 @@ Clone the repo
 
 ## Configurations
 
-Configurations can be found under configs folder. Name of the input file and accepted characters can be configured in config.json file. 
+Configurations can be found under configs folder. Name of the input file, lengt of ngrams (currently set to 3), accepted characters and number of guesses the program generates from the input file can be configured in config.json file. 
 
 ## Input data and results
 
-Input data file (currently configured to passwords.txt) must be in the input folder int .txt format and contain passwords that are written on separate lines. Results file is created automatically after the run.py script has been run.
+Input data files (currently configured to passwords.txt and training.txt) must be in the input folder in .txt format and contain passwords that are written on separate lines. Results file is created automatically after the run.py script has been executed. Please note that execution times grow exponentially as password lengths increase.
