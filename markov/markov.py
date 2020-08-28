@@ -8,41 +8,36 @@ class markov:
 
     def __init__(self, dict):
         self.name=dict['name']
+        self.ngram_size = dict['ngram_size']
+        self.number_of_guesses = dict['number_of_guesses']
         self.alphabet = dict['alphabet']
-        self.alphabet_len = len(self.alphabet)
-        self.alphabet_dict = OrderedDict.fromkeys(self.alphabet)
-        i = 0
-        for char in self.alphabet_dict:
-            self.alphabet_dict[char] = i
-            i += 1
-        self.alphabet_list = list(self.alphabet)
-        self._index = 0
+
     
     # Creates a dict of ngrams based on given word list
-    def build(self, wordList, n):
+    def build(self, wordList):
         ngrams = dict()
         for j in range(len(wordList)):
             word = wordList[j]
-            if len(word) < n:
+            if len(word) < self.ngram_size:
                 return ngrams
-            for i in range(len(word)-n):
-                ngram = tuple(word[i:i+n])
-                next_char = word[i+n]
+            for i in range(len(word)-self.ngram_size):
+                ngram = tuple(word[i:i+self.ngram_size])
+                next_char = word[i+self.ngram_size]
                 if ngram in ngrams:
                     ngrams[ngram].append(next_char)
                 else:
                     ngrams[ngram] = [next_char]
-            last_ngram = tuple(word[len(word)-n:])
+            last_ngram = tuple(word[len(word)-self.ngram_size:])
             if last_ngram in ngrams:
                 ngrams[last_ngram].append(None)
             else:
                 ngrams[last_ngram] = [None]
         return ngrams
 
-    # Generates a string guess based on given ngram dict
-    def generate(self, nGrams, n):
+    # Generates a list of guesses based on given ngram dict
+    def generate(self, nGrams):
         guesses = list()
-        for j in range(10):
+        for j in range(self.number_of_guesses):
             beginning = random.choice(list(nGrams.keys()))
             currentNgram = tuple(beginning)
             guess = list(beginning)
@@ -52,7 +47,7 @@ class markov:
                     next = random.choice(possibilities)
                     if next is None: break
                     guess.append(next)
-                    currentNgram = tuple(guess[-n:])
+                    currentNgram = tuple(guess[-self.ngram_size:])
                 else: 
                     break
             if ''.join(guess) not in guesses:

@@ -33,7 +33,9 @@ def run():
 def trainMarkov(passwordToGuess):
     markovIt = markov({
         "name": CONFIG.NAME,
-        "alphabet": CONFIG.ALPHABET
+        "alphabet": CONFIG.ALPHABET,
+        "ngram_size": CONFIG.NGRAM_SIZE,
+        "number_of_guesses": CONFIG.NUMBER_OF_GUESSES
     })
     try:
         with open("input/"+CONFIG.TRAINING_FILE, 'r') as inputfile:
@@ -42,14 +44,14 @@ def trainMarkov(passwordToGuess):
             for line in inputfile:
                 line = line.rstrip('\r\n')
                 inputWordList.append(line)
-            ngrams = markovIt.build(inputWordList,3)
-            guesses = markovIt.generate(ngrams,3)
+            ngrams = markovIt.build(inputWordList)
+            guesses = markovIt.generate(ngrams)
             tries, timeAmount = markovIt.guess(passwordToGuess,guesses)  
         return(tries, timeAmount)
     except Exception as e:    
         sys.stderr.write("Training file is empty")
         sys.exit(1)
-        
+
 def main():
     try:
         global CONFIG

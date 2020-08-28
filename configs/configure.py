@@ -14,6 +14,8 @@ class Configure:
                 self.NAME = config.get("name", "File")
                 self.PASSWORDS_FILE = config.get("passwords_file", "passwords.txt")
                 self.TRAINING_FILE = config.get("training_file", "training.txt")
+                self.NGRAM_SIZE = config.get("ngram_size", 3)
+                self.NUMBER_OF_GUESSES = config.get("number_of_guesses", 100)
                 self.ALPHABET = config.get("alphabet", "abcdefghijklmnopqrstuvwxyz")
 
         except Exception as e:

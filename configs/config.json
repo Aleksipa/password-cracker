@@ -2,5 +2,7 @@
     "name" : "conf-file",
     "passwords_file" : "passwords.txt",
     "training_file" : "training.txt",
+    "ngram_size" : 3,
+    "number_of_guesses" : 100,
     "alphabet" : "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#$%^&*()_-+=[{]}|:;'\",<.>/?"
 }
