@@ -23,9 +23,9 @@ def run():
             tries, timeAmount = bruteforce.guess(line)
             triesMarkov, timeAmountMarkov = trainMarkov(line)
             if timeAmountMarkov != 0:
-                fo.write("{}\t{}\t{}\t{}\n".format("It took brute force algorithm " + str(tries), "tries and " + str(timeAmount) + " seconds to guess the password. For markov chain based algorithm it took ", str(triesMarkov), "tries and " + str(timeAmountMarkov) + " seconds to guess the password"))
+                fo.write("{}\n".format("Password to guess: " + line + ". Brute force algorithm " + str(tries) + " tries and " + str(timeAmount) + " seconds. Markov chain based algorithm: " + str(triesMarkov) + " tries and " + str(timeAmountMarkov) + " seconds to guess the password."))
             else: 
-                fo.write("{}\t{}\n".format("It took brute force algorithm " + str(tries), "tries and " + str(timeAmount) + " seconds to guess the password. Markov chain based algorithm wasn't able to guess the password."))
+                fo.write("{}\n".format("Password to guess: " + line + ". Brute force algorithm " + str(tries) + " tries and " + str(timeAmount) + " seconds. Markov chain based algorithm wasn't able to guess the password."))
             fo.flush()
     fo.close()
 
@@ -35,18 +35,21 @@ def trainMarkov(passwordToGuess):
         "name": CONFIG.NAME,
         "alphabet": CONFIG.ALPHABET
     })
-    
-    with open("input/"+CONFIG.TRAINING_FILE, 'r') as inputfile:
-        guesses = list()
-        inputWordList = list()
-        for line in inputfile:
-            line = line.rstrip('\r\n')
-            inputWordList.append(line)
-        ngrams = markovIt.build(inputWordList,3)
-        guesses = markovIt.generate(ngrams,3)
-        tries, timeAmount = markovIt.guess(passwordToGuess,guesses)  
-    return(tries, timeAmount)
-
+    try:
+        with open("input/"+CONFIG.TRAINING_FILE, 'r') as inputfile:
+            guesses = list()
+            inputWordList = list()
+            for line in inputfile:
+                line = line.rstrip('\r\n')
+                inputWordList.append(line)
+            ngrams = markovIt.build(inputWordList,3)
+            guesses = markovIt.generate(ngrams,3)
+            tries, timeAmount = markovIt.guess(passwordToGuess,guesses)  
+        return(tries, timeAmount)
+    except Exception as e:    
+        sys.stderr.write("Training file is empty")
+        sys.exit(1)
+        
 def main():
     try:
         global CONFIG
