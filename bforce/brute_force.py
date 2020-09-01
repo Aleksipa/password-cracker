@@ -19,16 +19,13 @@ class bruteForce:
         self._index = 0
 
     def guess(self,password):
-        start = time.time()
         attempts = 0
         for i in range(1, 9):
             for letter in cProduct(self.alphabet_list, repeat=i):
                 attempts += 1
                 letter = ''.join(letter)
                 if letter == password:
-                    end = time.time()
-                    executionTime = end - start
-                    return (attempts, executionTime)
+                    return (attempts)
 
 
 

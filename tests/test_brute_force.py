@@ -3,6 +3,7 @@ import unittest
 from bforce.brute_force import bruteForce
 from configs.configure import Configure
 
+# Unit tests for 
 class TestBruteForceMethod(unittest.TestCase):
 
     def setUp(self):

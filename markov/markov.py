@@ -52,20 +52,7 @@ class markov:
                     break
             if ''.join(guess) not in guesses:
                 guesses.append(''.join(guess))
-        return guesses
-   
-
-    # Tries to guess given password based on list of guesses
-    def guess(self, password, guesses):
-        start = time.time()
-        attempts = 0
-        for i in range(len(guesses)):
-            attempts +=1
-            if guesses[i] == password:
-                end = time.time()
-                executionTime = end - start
-                return (attempts, executionTime)
-        return (attempts, 0)
+        return guesses   
 
 
 

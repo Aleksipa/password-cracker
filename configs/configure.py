@@ -17,6 +17,7 @@ class Configure:
                 self.NGRAM_SIZE = config.get("ngram_size", 3)
                 self.NUMBER_OF_GUESSES = config.get("number_of_guesses", 100)
                 self.ALPHABET = config.get("alphabet", "abcdefghijklmnopqrstuvwxyz")
+                self.TRAINING_RESULT_FILE = config.get("training_result_file", "training_result.txt")
 
         except Exception as e:
             sys.stderr.write("\x1b[1;%dm" % (31) + "Malformed config file: {}\n".format(e) + "\x1b[0m")
