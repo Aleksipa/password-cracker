@@ -15,6 +15,7 @@ from configs.configure import Configure
 def runMarkov():
 
     # Checks if password from training results matches the input folders password.
+    print("--Starting to compare guesses from training results to input password(s)-- ", file=sys.stderr)
     try:
         fo = open("results/"+CONFIG.PASSWORDS_FILE.rstrip('.txt')+"_guessing_result.txt", "w")
         with open("input/"+CONFIG.PASSWORDS_FILE, 'r') as inputfile:
@@ -29,7 +30,7 @@ def runMarkov():
                         if attempts != -1:
                             fo.write("{}\n".format("Password to guess: " + line + ". Algorithm: Markov chain. " + str(attempts) + " tries and " + str(executionTime) + " seconds."))                    
                         else:
-                            fo.write("{}\n".format("Markov chain based algorithm wasn't able to guess the password."))
+                            fo.write("{}\n".format("Password to guess: " + line + ". Markov chain based algorithm wasn't able to guess the password."))
                 fo.flush()
                 fo.close()
             else:
@@ -38,7 +39,9 @@ def runMarkov():
     except Exception as e:
         sys.stderr.write("\x1b[1;%dm" % (31) + "Error: {}\n".format(e) + "\x1b[0m")
         sys.exit(1)
+    print("--Done comparing guesseses to passwords. Results were saved in results folder training_results.txt file-- ", file=sys.stderr)    
 
+# Reads passwords guesses from training result file and checks them against given password
 def guess(password):
 
     try:
