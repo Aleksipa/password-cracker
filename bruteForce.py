@@ -39,7 +39,7 @@ def runBruteForce():
     except Exception as e:
         sys.stderr.write("\x1b[1;%dm" % (31) + "Error: {}\n".format(e) + "\x1b[0m")
         sys.exit(1)
-    print("--Done comparing guesseses to passwords. Results were saved in results folder passwords_guessing_result.txt file-- ", file=sys.stderr)     
+    print("--Done comparing guesses to passwords. Results were saved in results folder passwords_guessing_result.txt file-- ", file=sys.stderr)     
 
 def main():
     try:
