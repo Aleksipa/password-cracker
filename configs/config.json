@@ -4,6 +4,5 @@
     "training_file" : "training.txt",
     "ngram_size" : 3,
     "number_of_guesses" : 50000,
-    "alphabet" : "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#$%^&*()_-+=[{]}|:;'\",<.>/?",
-    "training_result_file": "training_result.txt"
+    "alphabet" : "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#$%^&*()_-+=[{]}|:;'\",<.>/?"
 }

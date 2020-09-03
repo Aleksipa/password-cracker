@@ -35,3 +35,7 @@ This creates a training_results.txt file into result folder. After this file has
 `python markovChain.py`
 
 This creates a password_guessing_result.txt file to results folder, which contains number of guesses and time it took to guess for every password that was found on the input folders passwords.txt file. In case the password wasn't found on generated guesses the program prints a statement about that.
+
+## How to edit configurations
+
+Configurations of the program can be found from the configs folder. Bu editing the config.json file values, it is possible to edit the name of the configure, input password and input training files. In addition ngram size, number of guesses the markov chain based algorithm tries to generate and alphabet used can be configured. 
