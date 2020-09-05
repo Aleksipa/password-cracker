@@ -14,31 +14,39 @@ class markov:
 
     
     # Creates a dict of ngrams based on given word list
-    def build(self, wordList):
+    def buildNgrams(self, wordList):
         ngrams = dict()
         for j in range(len(wordList)):
             word = wordList[j]
-            if len(word) < self.ngram_size:
-                return ngrams
-            for i in range(len(word)-self.ngram_size):
-                ngram = tuple(word[i:i+self.ngram_size])
-                next_char = word[i+self.ngram_size]
-                if ngram in ngrams:
-                    ngrams[ngram].append(next_char)
+            if len(word) >= self.ngram_size:
+                for i in range(len(word)-self.ngram_size):
+                    ngram = tuple(word[i:i+self.ngram_size])
+                    next_char = word[i+self.ngram_size]
+                    if ngram in ngrams:
+                        ngrams[ngram].append(next_char)
+                    else:
+                        ngrams[ngram] = [next_char]
+                last_ngram = tuple(word[len(word)-self.ngram_size:])
+                if last_ngram in ngrams:
+                    ngrams[last_ngram].append(None)
                 else:
-                    ngrams[ngram] = [next_char]
-            last_ngram = tuple(word[len(word)-self.ngram_size:])
-            if last_ngram in ngrams:
-                ngrams[last_ngram].append(None)
-            else:
-                ngrams[last_ngram] = [None]
+                    ngrams[last_ngram] = [None]
         return ngrams
+    
+    def buildBeginnings(self, wordList):
+        beginnings = []
+        for j in range(len(wordList)):
+            word = wordList[j]
+            beginning = word[:self.ngram_size]
+            if len(word) >= self.ngram_size:
+                beginnings.append(beginning)
+        return beginnings        
 
     # Generates a list of guesses based on given ngram dict
-    def generate(self, nGrams):
+    def generateGuesses(self, nGrams, beginnings):
         guesses = list()
         for j in range(self.number_of_guesses):
-            beginning = random.choice(list(nGrams.keys()))
+            beginning = random.choice(beginnings)
             currentNgram = tuple(beginning)
             guess = list(beginning)
             for i in range(10):
