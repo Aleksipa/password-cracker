@@ -4,7 +4,7 @@ This program consists of three separeate program modules: `train`, `markovChain`
 
 # Implemented time and space complexities
 
-The time complexities of the implementations can be found in the [definition](/project_definitions.md) document.
+The time complexities of the implementations can be found in the [definition](docs/project_definitions.md) document.
 
 # Comparative performance analysis
 
