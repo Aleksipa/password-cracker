@@ -3,7 +3,7 @@
     "passwords_file" : "passwords.txt",
     "training_file" : "training.txt",
     "ngram_size" : 3,
-    "number_of_guesses" : 200000,
+    "max_number_of_guesses" : 300000,
     "alphabet" : "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#$%^&*()_-+=[{]}|:;'\",<.>/?"
 }
 

@@ -16,7 +16,7 @@ def train():
         "name": CONFIG.NAME,
         "alphabet": CONFIG.ALPHABET,
         "ngram_size": CONFIG.NGRAM_SIZE,
-        "number_of_guesses": CONFIG.NUMBER_OF_GUESSES,
+        "max_number_of_guesses": CONFIG.MAX_NUMBER_OF_GUESSES,
         "training_file": CONFIG.TRAINING_FILE
     })
     # Generates guesses
