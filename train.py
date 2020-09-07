@@ -29,9 +29,8 @@ def train():
             for line in inputfile:
                 line = line.rstrip('\r\n')
                 inputWordList.append(line)
-            ngrams = markovIt.buildNgrams(inputWordList) # generates ngrams from input words
-            beginnings = markovIt.buildBeginnings(inputWordList) 
-            guesses = markovIt.generateGuesses(ngrams, beginnings) # generates guesses from input ngrams
+            ngrams = markovIt.buildNgrams(inputWordList)
+            guesses = markovIt.generateGuesses(ngrams) 
             for password in guesses:
                 fo.write("{}\n".format(password)) # writes guesses to file
             end = time.time()
@@ -39,7 +38,7 @@ def train():
             fo.flush()
         fo.close()
     except Exception as e:    
-        sys.stderr.write("Training file is empty")
+        sys.stderr.write("\x1b[1;%dm" % (31) + "Error: {}\n".format(e) + "\x1b[0m")
         sys.exit(1)
     print("--Done generating guesses. Password generation took: " + str(executionTime) + " seconds Guesses were saved in results folder training_results.txt file-- ", file=sys.stderr)
 
